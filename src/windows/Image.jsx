@@ -1,7 +1,6 @@
 import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import {WindowControls} from '#components/index.js';
 import useWindowStore from "#store/window";
-import { Wind } from "lucide-react";
 
 const Image = () => {
     const {windows} = useWindowStore();

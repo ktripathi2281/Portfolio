@@ -17,37 +17,14 @@ const WindowWrapper = (Component, windowKey) => {
             if(!el || !isOpen) return;
 
             el.style.display = 'block';
-            console.log('Animating window open:', windowKey);
             gsap.fromTo(el, {scale:0.8, opacity:0, y:40}, {scale:1, opacity:1, y:0, duration:0.4, ease:"power3.out"})
         }, [isOpen]); 
 
-        // useLayoutEffect(()=>{
-        //     const el = ref.current;
-        //     if(!el) {
-        //         console.log('no el for', windowKey);
-        //         return;
-        //     }
-        //     console.log('setting up draggable for', windowKey);
-        //     Draggable.create(el, {
-        //         onPress : ()=> {
-        //             console.log('onPress for', windowKey);
-        //             focusWindow(windowKey);
-        //         }
-        //     });
-        // }, [isOpen]);
-
          useGSAP(()=>{
             const el = ref.current;
-            if(!el) {
-                console.log('no el for', windowKey);
-                return;
-            }
-            console.log('setting up draggable for', windowKey);
+            if(!el) return;
             const [instance] = Draggable.create(el, {
-                onPress : ()=> {
-                    console.log('onPress for', windowKey);
-                    focusWindow(windowKey);
-                }
+                onPress : ()=> focusWindow(windowKey)
             });
             return () => instance.kill();
         }, [isOpen]);
@@ -65,7 +42,7 @@ const WindowWrapper = (Component, windowKey) => {
         </section>
     }
 
-    Wrapped.displayname = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
+    Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
 
   return Wrapped;
   

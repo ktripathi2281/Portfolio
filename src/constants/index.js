@@ -43,12 +43,6 @@ const dockApps = [
     canOpen: true,
   },
   {
-    id: "safari",
-    name: "Articles", // was "Safari"
-    icon: "safari.png",
-    canOpen: true,
-  },
-  {
     id: "contact",
     name: "Contact", // or "Get in touch"
     icon: "contact.png",
@@ -62,41 +56,30 @@ const dockApps = [
   },
 ];
 
-const blogPosts = [
-  {
-    id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
-  },
-];
-
 const techStack = [
   {
-    category: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript"],
-  },
-  {
-    category: "Mobile",
-    items: ["React Native", "Expo"],
-  },
-  {
-    category: "Styling",
-    items: ["Tailwind CSS", "Sass", "CSS"],
+    category: "Languages",
+    items: ["Java", "JavaScript", "TypeScript", "SQL"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Hono"],
+    items: ["Node.js", "Express", "Spring Boot", "Spring Security", "REST APIs", "WebSockets"],
+  },
+  {
+    category: "AI / LLM",
+    items: ["Gemini API", "Function calling", "Agent loops", "Agent tracing"],
   },
   {
     category: "Database",
-    items: ["MongoDB", "PostgreSQL"],
+    items: ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
   },
   {
-    category: "Dev Tools",
-    items: ["Git", "GitHub", "Docker"],
+    category: "Frontend",
+    items: ["React", "Tailwind CSS", "Vite"],
+  },
+  {
+    category: "DevOps",
+    items: ["Docker", "Docker Compose", "Git", "Linux"],
   },
 ];
 
@@ -156,7 +139,6 @@ export {
   navLinks,
   navIcons,
   dockApps,
-  blogPosts,
   techStack,
   socials,
   photosLinks,
@@ -173,7 +155,7 @@ const WORK_LOCATION = {
     // ▶ Project 1
     {
       id: 5,
-      name: "Skill Barter",
+      name: "LeetCode Agent Tracker",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
@@ -181,31 +163,28 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Skill-Barter.txt",
+          name: "LeetCode-Agent-Tracker.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
+          subtitle: "Three Gemini agents on top of a LeetCode prep platform",
           description: [
-            " Skill Barter is a peer-to-peer matchmaking platform that allows users to connect and reciprocally trade knowledge without monetary exchange. It resolves the double-coincidence of wants through a centralized matching algorithm alongside a real-time, WebSocket-powered chat interface to coordinate and track active trades. The application was built as a secure, full-stack SPA using the MERN stack (MongoDB, Express, Node.js, React/Vite), leveraging Socket.io and JWTs.y",
+            "A full-stack LeetCode prep platform (React, Express, MongoDB) with problem tracking, a Leitner-style spaced-repetition scheduler, and an analytics dashboard covering topic heatmaps and company readiness.",
+            "Planner agent: an autonomous weekly-plan agent built on Gemini function calling. The model picks from 4 database tools across up to 8 iterations, then returns a study plan with a rationale for each choice.",
+            "Hint tutor: a Socratic tutor that withholds the solution and gives graduated, multi-turn hints instead.",
+            "Post-mortem agent: reviews solved code and flags suboptimal time and space complexity.",
+            "Observability: every agent invocation (tool calls, reasoning trace, latency) is logged to a queryable collection, so each agent decision can be audited after the fact.",
           ],
         },
         {
           id: 2,
-          name: "skillBarter.com",
+          name: "GitHub",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://skill-barter-psi.vercel.app/",
+          href: "https://github.com/ktripathi2281/Leetcode-Tracker",
           position: "top-10 right-20",
-        },
-        {
-          id: 4,
-          name: "skillBarter.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-52 right-80",
         },
       ],
     },
@@ -213,7 +192,7 @@ const WORK_LOCATION = {
     // ▶ Project 2
     {
       id: 6,
-      name: "LeetCode Agent Tracker",
+      name: "Skill Barter",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -221,21 +200,35 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "LeetCode Agent Tracker.txt",
+          name: "Skill-Barter.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
+          subtitle: "Peer-to-peer skill exchange with real-time chat",
           description: [
-            "A full-stack LeetCode prep platform (React, Express, MongoDB) combining problem tracking and spaced repetition with three distinct AI agents powered by Gemini: an autonomous planner chaining tool calls across up to 8 iterations, a Socratic hint tutor, and a post-mortem code analyzer — every agent interaction logged for full auditability.",
+            "A platform where people trade skills instead of money. A matching engine classifies users as Perfect (mutual) or Partial (one-way) matches and sorts them by distance using MongoDB 2dsphere geospatial indexes.",
+            "Real-time chat on Socket.io with room-based WebSockets, typing indicators, read receipts, and a two-way trade lifecycle that needs mutual consent to accept and complete a trade.",
+            "Auth: dual-token JWT (15-min access + 7-day refresh) with silent renewal, OTP email verification, bcrypt hashing, and API rate limiting against brute-force attempts.",
+            "Stack: MongoDB, Express, React (Vite), Node.js. Deployed on Render and Vercel with environment-driven config and CORS whitelisting.",
           ],
         },
         {
-          id: 4,
-          name: "LeetCode Agent Tracke.png",
-          icon: "/images/image.png",
+          id: 2,
+          name: "Live demo",
+          icon: "/images/safari.png",
           kind: "file",
-          fileType: "img",
+          fileType: "url",
+          href: "https://skill-barter-psi.vercel.app/",
+          position: "top-10 left-20",
+        },
+        {
+          id: 3,
+          name: "GitHub",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://github.com/ktripathi2281/Skill-Barter",
           position: "top-52 left-80",
         },
       ],
@@ -266,13 +259,13 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "txt",
       position: "top-60 left-5",
-      subtitle: "Meet the Developer Behind the Code",
+      subtitle: "Backend engineer, building with LLMs",
       image: "/images/me.jpg",
       description: [
-        "Hey! I’m Kaustubh 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        "Hey! I'm Kaustubh 👋, a software engineer at Tata Consultancy Services, where I work on a fintech/banking module: backend services in Java and Spring Boot, front-end features in JavaScript, and SQL tuning when things get slow.",
+        "Most of my work is backend: REST APIs, auth, WebSockets, and databases (PostgreSQL, MongoDB, Redis). I like the unglamorous parts, like debugging production issues from logs and making queries faster with the right index.",
+        "Lately I've been building LLM-powered systems: agents that call tools, tutors that know when not to give the answer, and the logging you need to see why an agent did what it did.",
+        "I'm moving toward AI engineering, which to me means taking what I know about building reliable backends and applying it to software with models in it.",
       ],
     },
   ],
@@ -303,26 +296,7 @@ const TRASH_LOCATION = {
   name: "Trash",
   icon: "/icons/trash.svg",
   kind: "folder",
-  children: [
-    {
-      id: 1,
-      name: "trash1.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-10 left-10",
-      imageUrl: "/images/trash-1.png",
-    },
-    {
-      id: 2,
-      name: "trash2.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-40 left-80",
-      imageUrl: "/images/trash-2.png",
-    },
-  ],
+  children: [],
 };
 
 export const locations = {

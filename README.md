@@ -1,16 +1,43 @@
-# React + Vite
+# Kaustubh Tripathi · Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A macOS-style portfolio: a desktop with a dock, a menu bar, and draggable windows for projects, skills, resume, and contact.
 
-Currently, two official plugins are available:
+**Live:** https://portfolio-eta-pied-53.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I'm a backend engineer (Java/Spring Boot, Node.js) moving into AI engineering. The main project here is [LeetCode Agent Tracker](https://github.com/ktripathi2281/Leetcode-Tracker), a set of Gemini agents with function calling and full invocation logging.
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** + **Vite**
+- **GSAP** (Draggable) for window dragging and dock magnification
+- **Zustand** + **Immer** for window state (open/close, focus, z-order)
+- **Tailwind CSS v4**
+- **react-pdf** for the in-browser resume viewer
 
-## Expanding the ESLint configuration
+## How it works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Every window is wrapped by [`WindowWrapper`](src/hoc/WindowWrapper.jsx), which handles open animations, dragging, and focus. Window state lives in [`src/store/window.js`](src/store/window.js), so anything can open a window with `openWindow(key, data)`.
+
+Content (projects, skills, about, socials) lives in [`src/constants/index.js`](src/constants/index.js). Adding a project means adding an entry there, with no component changes.
+
+```
+src/
+├── components/   Navbar, Dock, Welcome, WindowControls
+├── hoc/          WindowWrapper (drag, focus, animation)
+├── store/        Zustand stores for windows and Finder location
+├── windows/      Finder, Terminal, Resume, Contact, Text, Image
+└── constants/    All site content
+```
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Roadmap
+
+- **Spotlight (⌘K) assistant:** ask questions about my work. Answers are grounded in my projects and resume, stream in, and can open the relevant windows through Gemini function calling.
+- **Trace view:** show the tool calls, tokens, latency, and cost behind each answer.
+- **Activity Monitor:** live request, latency, and spend metrics from the backend.

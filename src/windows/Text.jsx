@@ -7,7 +7,7 @@ const Text = () => {
 
   if(!data) return null;
 
-  const {name, image, subitle, description} = data;
+  const {name, image, subtitle, description} = data;
   return (
     <>
         <div id="window-header">
@@ -17,12 +17,12 @@ const Text = () => {
         <div className="p-5 space-y-6 bg-white">
             {image? (
                 <div className="w-full">
-                    <img src={image} alt={name} className="w-full h-auto" rounded />
+                    <img src={image} alt={name} className="w-full h-auto rounded" />
                 </div>
             ): null}
 
-            {subitle? (
-                <h3 className="text-lg font-semibold">{subitle}</h3>
+            {subtitle? (
+                <h3 className="text-lg font-semibold">{subtitle}</h3>
             ): null}
 
             {Array.isArray(description) && description.length>0 ? (

@@ -1,6 +1,5 @@
 import WindowWrapper from "#hoc/WindowWrapper";
 import WindowControls from "#components/WindowControls";
-import useWindowStore from "#store/window";
 import { socials } from "#constants";
 const Contact = () => {
   return (
@@ -11,9 +10,9 @@ const Contact = () => {
     </div>
 
     <div className="p-5 space-y-5">
-        <img src="/images/adrian.jpg" alt="Me" className="w-20 rounded-full" />
+        <img src="/images/me.jpg" alt="Kaustubh Tripathi" className="w-20 rounded-full" />
         <h2>Let's Connect</h2>
-        <p>tripathikaustubh2281@gmail.com</p>
+        <a href="mailto:tripathikaustubh2281@gmail.com" className="block hover:underline">tripathikaustubh2281@gmail.com</a>
         <ul>
             {socials.map(({id, bg, link, icon, text})=>(
                 <li key={id} style={{background:bg}}>

@@ -32,7 +32,7 @@ const setupTextHover = (container, type) =>{
     }
 
     const handleMouseMove = (e) =>{
-        const {left, width} = container.current.getBoundingClientRect();
+        const {left} = container.current.getBoundingClientRect();
         const x = e.clientX - left;
 
         letters.forEach((letter)=>{
@@ -65,6 +65,7 @@ const Welcome = () => {
     return <section id='welcome'>
         <p ref={subtitleref}>{renderText("Hey, I'm Kaustubh! Welcome to my", 'text-3xl font-georama', 100)}</p>
         <h1 ref={titleref} className='mt-7'>{renderText("Portfolio", 'text-9xl italic font-georama')}</h1>
+        <p className='mt-8 text-lg font-roboto text-gray-300 tracking-wide text-center'>Backend engineer · Building LLM-powered systems</p>
     </section>
 }
 
